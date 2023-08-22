@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.post('https://nodejs-production-722a.up.railway.app/upload', upload.single('audio'), (req, res) => {
+app.post('/upload', upload.single('audio'), (req, res) => {
     console.log('call received', req);
 
     //downloadWav(req.body.data , false);
