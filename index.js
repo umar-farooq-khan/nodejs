@@ -1,6 +1,7 @@
 const http = require('http');
 const PORT = 3000;
-
+const cors = require("cors");
+app.use(cors());
 const server = http.createServer((req, res) => {
     // Manually setting the CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
