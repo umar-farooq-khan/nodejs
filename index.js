@@ -4,6 +4,7 @@ let fetch;
 import('node-fetch').then(module => {
     fetch = module.default;
 });
+const toWav = require('audiobuffer-to-wav');
 
 const fs= require('fs');
 const express = require('express');
@@ -24,11 +25,18 @@ app.get('/', (req, res) => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+app.post('/buffer', upload.single('audio'), async (req, res) => {
+
+    const wavBuffer = toWav(req.file.buffer);
+    fs.writeFileSync('output.wav', wavBuffer);
+
+});
 app.post('/upload', upload.single('audio'), (req, res) => {
     console.log('call received', req);
 
     //downloadWav(req.body.data , false);
-
+    // Now you can save the wavBuffer to a file if needed:
+    fs.writeFileSync('output_buffer.wav', wavBuffer);
     if (!req.file) {
         return res.status(400).send('No file uploaded');
     }
@@ -71,7 +79,7 @@ app.post('/upload', upload.single('audio'), (req, res) => {
         };
 
          try {
-            const response = await fetch('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyDx7DmF4zy2DMDYVTurz5ykWgmw00ROII0', {
+            const response = await fetch('https://speech.googleapis.com/v1/speech:recognize?key=jknkjnkj', {
                 method: 'POST',
                 body: JSON.stringify(requestPayload),
                 headers: {
