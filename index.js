@@ -44,6 +44,7 @@ app.post('/upload', upload.single('audio'), (req, res) => {
     });
 
     ffmpegProcess.stderr.on('data', (data) => {
+        console.log('Errorrrr')
         console.error(`ffmpeg stderr: ${data}`);
     });
 
