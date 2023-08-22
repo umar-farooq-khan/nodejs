@@ -7,6 +7,9 @@
   "license": "MIT",
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.5",
+    "@ffmpeg/util": "^0.12.0",
+    "audiobuffer-to-wav": "^1.0.0",
+    "browserify": "^17.0.0",
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
